@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.google.com/">
+    <button style="background-color: papayawhip; font-size: 25px;">button 1</button>
+     </a>
+    <br><br>
+ <a href="lyrics.html">
+    <button style="background-color: lightcoral; font-size: 20px;">button 2 </button>
+    </a>
+    <br><br>
+    <button onclick="dosome()" style="background-color: lightseagreen; font-size: 25px;">button 3 </button>
+
+    <p id="greet">Hello</p>
+
+    <script>
+        function dosome(){
+            document.getElementById("greet").innerHTML="goodbye"
+        }
+    </script>
+</body>
+</html>
