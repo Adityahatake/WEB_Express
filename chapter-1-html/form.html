@@ -8,7 +8,7 @@
 <body>
     <h3>Sample Form:
     </h3>
-    <form action="index.php" method="post">
+    <form  >
         <label for="Username">Username:</label>
         <input type="text" id="Username" placeholder="ex. Shivansh">
         <br>
@@ -16,12 +16,21 @@
         <input type="password" id="password" placeholder=aBCdeF!@33#$5 >
         <br>
         <label for="Email">Email:</label>
-        <input id="Email" type="email" placeholder="sample@gmail.com" required >
+        <input id="Email" type="email" placeholder="sample@gmail.com" >
         <label for="Gender"></label> <br>
         <label for="Phone">Phone:</label>
-        <input type="number"  id="Phone">
-        
-
+        <input type="tel"  id="Phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <br><label for="BDay">Birthday:</label>
+        <input type="date" id="BDay">
+        <br><label for="Quantiy">Quantiy:</label>
+        <input type="number" id="Quantiy" min="0" max="8"> 
+        <br><label for="Title">Title: </label>
+        <label for="Mr">Mr.</label>
+        <input type="radio" name="Title" id="Mr">
+        <label for="Mrs">Mrs.</label>
+        <input type="radio" name="Title" id="Mrs">
+        <label for="Phd">Phd.</label>
+        <input type="radio" name="Title" id="Phd">
 
        <br><br><input type="reset"><br> 
        
