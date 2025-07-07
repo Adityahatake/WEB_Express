@@ -1,0 +1,25 @@
+body{
+    background-color: black;
+}
+h1{
+    color: pink;
+    background-color: rgb(126, 126, 59);
+}
+#p1{
+    color: orchid;
+}
+#p2{
+    color:olive;
+}
+#p3{
+    color: lightblue;
+}
+#p4{
+    color: brown;
+}
+.odd{
+    background-color: rebeccapurple;
+}
+.even{
+    background-color: khaki;
+}
