@@ -5,6 +5,9 @@ h1{
     color: pink;
     background-color: rgb(126, 126, 59);
 }
+p{
+    color: white;
+}
 #p1{
     color: orchid;
 }
