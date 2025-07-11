@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Examples</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 100px;
+            color: white;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .static-box {
+            background-color: steelblue;
+            position: static;
+        }
+
+        .relative-box {
+            background-color: tomato;
+            position: relative;
+            top: 20px;
+            left: 20px;
+        }
+
+        .absolute-container {
+            position: relative;
+            height: 200px;
+            background-color: lightgray;
+            margin: 20px 0;
+        }
+
+        .absolute-box {
+            background-color: purple;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .fixed-box {
+            background-color: darkgreen;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+
+        .sticky-box {
+            background-color: orange;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="static-box box">Static Position</div>
+
+    <div class="relative-box box">Relative Position</div>
+
+    <div class="absolute-container">
+        <div class="absolute-box box">Absolute Position</div>
+    </div>
+
+    <div class="sticky-box box">Sticky Position (scroll to see effect)</div>
+
+    <div style="height: 1000px;">Scroll Down</div>
+
+    <div class="fixed-box box">Fixed Position</div>
+       <!--
+  The 'position' property defines how an element is positioned in the document.
+
+  1. static (default):
+     - Elements follow the normal document flow.
+     - Top, right, bottom, left have no effect.
+
+  2. relative:
+     - Positioned relative to its normal position.
+     - Can be moved using top, right, bottom, left.
+
+  3. absolute:
+     - Positioned relative to the nearest positioned ancestor (not static).
+     - Removed from normal flow.
+
+  4. fixed:
+     - Positioned relative to the browser window (viewport).
+     - Stays in the same place when scrolling.
+
+  5. sticky:
+     - Acts like relative until a scroll threshold is met, then behaves like fixed.
+     - Useful for sticky headers or sidebars.
+-->
+
+</body>
+</html>
