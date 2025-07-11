@@ -1,0 +1,1 @@
+In this most of the files are written with internal CSS for easy navigation and better understanding
