@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            background-color: rgb(101, 188, 182);
+        }
+        #container p{
+            /* descendent */
+            border:2px solid red;
+        }
+        #container >p{ 
+            /* child */
+            border-radius:10px ;
+            background-color: lightsalmon;
+        }
+        #container ~ p{
+            /* genral sibling */
+            background-color: pink;
+        }
+        #container + p{
+            /* adjacent sibling */
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <!--
+  CSS Combinators define relationships between selectors:
+
+  1. Descendant (space):
+     - Selects all matching elements inside another.
+     - Example: div p → all <p> inside <div>
+
+  2. Child (>):
+     - Selects direct children only.
+     - Example: div > p → <p> directly inside <div>
+
+  3. Adjacent sibling (+):
+     - Selects the next sibling.
+     - Example: h1 + p → <p> right after <h1>
+
+  4. General sibling (~):
+     - Selects all siblings after the element.
+     - Example: h1 ~ p → all <p> after <h1> (same parent)
+-->
+     <div id="container">
+        <p>this is p1</p>
+        <p>this is p2</p>
+        <div>
+            <p>this is p3</p>
+        </div>
+     </div>   
+     <p>this is p4</p>
+     <p>this is p5</p>
+
+    
+</body>
+</html>
