@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pseudo-Classes Example</title>
+  <style>
+    /* Link states */
+    a:link {
+      color: blue;
+    }
+    a:visited {
+      color: khaki;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: hotpink;
+    }
+    a:active {
+      color: red;
+    }
+
+    /* Input focus */
+    input:focus {
+      outline: 2px solid green;
+    }
+
+    /* List child examples */
+    ul li:first-child {
+      font-weight: bold;
+    }
+    ul li:last-child {
+      color: gray;
+    }
+    ul li:nth-child(2) {
+      color: orange;
+    }
+    li:not(:hover){
+        background-color: red;
+    }
+    li:hover{
+        background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Pseudo-Classes Demo</h2>
+
+  <p><a href="https://example.com" target="_blank">Visit Example.com</a></p>
+
+  <p>Enter your name: <input type="text" placeholder="Your name here"></p>
+
+  <ul>
+    <li>First Item</li>
+    <li>Second Item</li>
+    <li>Third Item</li>
+  </ul>
+
+</body>
+</html>
