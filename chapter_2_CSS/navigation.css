@@ -1,0 +1,36 @@
+     body{
+            margin: 0px;
+            background-color: rgb(168, 166, 166);
+
+           
+        }
+        main{
+            margin: 20px;
+        }
+        h1{
+            text-align: center;
+            background-color: pink;
+            padding: 20px;
+            margin: 0px;
+        }
+        .navbar ul{
+            list-style: none;
+            background-color: rgb(60, 11, 123);
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+            
+        }
+        .navbar a{
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            text-align: center;
+        }
+        .navbar a:hover{
+            background-color: rgb(76, 33, 133);
+        }
+        .navbar li{
+            float: left;
+        }
