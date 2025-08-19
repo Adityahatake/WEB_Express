@@ -13,12 +13,16 @@
             width:  200px;
             background-color: wheat;
             font-size: 12em;
-            animation-name: slideleft;
-            animation-duration: 3s;
+            /* animation-name: slideleft; */
+            animation-name: slideright;
+            animation-duration: 2s;
             animation-iteration-count: infinite;
         }
         @keyframes slideleft{
             from{transform: translateX(100px);}
+        }
+         @keyframes slideright{
+            to{transform: translateX(200px);}
         }
     </style>
 </head>
