@@ -11,7 +11,9 @@
         #box{
             height: 200px;
             width:  200px;
-            background-color: wheat;
+            border-radius: 12px;
+            border: 3px solid gainsboro;
+            background-color: rgb(105, 128, 205);
             font-size: 12em;
             /* animation-name: slideleft; */
             /* animation-name: slideright; */
@@ -21,10 +23,34 @@
             /* animation-name: grow; */
             /* animation-name: shrink; */
             /* animation-name: fade; */
-            animation-name: colorchange;
+            /* animation-name: colorchange; */
+            animation-name: glow;
+
+            /* animation-direction: alternate-reverse; */
+            /* animation-play-state: running; */
+            /* animation-timing-function:ease-in-out; */
+            
 
             animation-duration: 2s;
             animation-iteration-count: infinite;
+        }
+        img{
+            ba
+            border-radius: 12px;
+            border: 3px solid gainsboro;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+                animation-name: slideleft;
+            /* animation-name: slideright; */
+            /* animation-name: slideup; */
+            /* animation-name: slidedown; */
+            /* animation-name: rotate; */
+            /* animation-name: grow; */
+            /* animation-name: shrink; */
+            /* animation-name: fade; */
+            /* animation-name: colorchange; */
+            /* animation-name: glow; */
+
         }
         @keyframes slideleft{
             from{transform: translateX(100px);}
@@ -57,12 +83,16 @@
             60%{background-color: rebeccapurple;}
             80%{background-color: lightblue;}
             100%{background-color: greenyellow;}
-
+        }
+        @keyframes glow{
+            50%{box-shadow: 0px 0px 50px yellow;}
         }
 
     </style>
 </head>
 <body>
     <div id="box">Hi</div>
+    <br>
+    <img src="images/pikachu.png" alt="">
 </body>
 </html>
