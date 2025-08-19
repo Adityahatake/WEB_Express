@@ -16,8 +16,12 @@
             /* animation-name: slideleft; */
             /* animation-name: slideright; */
             /* animation-name: slideup; */
-            animation-name: slidedown;
-            animation-name: rotate;
+            /* animation-name: slidedown; */
+            /* animation-name: rotate; */
+            /* animation-name: grow; */
+            /* animation-name: shrink; */
+            /* animation-name: fade; */
+            animation-name: colorchange;
 
             animation-duration: 2s;
             animation-iteration-count: infinite;
@@ -37,6 +41,25 @@
         @keyframes rotate{
             50%{transform: rotateZ(360deg);}
         }
+        @keyframes grow{
+            50%{transform: scale(2 ,2)}
+        }
+        @keyframes shrink{
+            50%{transform: scale(0.5 ,0.5)}
+        }
+          @keyframes fade{
+            50%{opacity: 0;}
+        }
+        @keyframes colorchange{
+            0%{background-color: wheat;}
+            20%{background-color: pink;}
+            40%{background-color: khaki;}
+            60%{background-color: rebeccapurple;}
+            80%{background-color: lightblue;}
+            100%{background-color: greenyellow;}
+
+        }
+
     </style>
 </head>
 <body>
