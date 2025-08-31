@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Operators Explained</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h1 { color: #2c3e50; }
+        section { margin-bottom: 30px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+        pre { background: #aea2a2; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Operators Explained</h1>
+    <section>
+        <h2>1. Arithmetic Operators</h2>
+        <ul>
+            <li><code>+</code> Addition</li>
+            <li><code>-</code> Subtraction</li>
+            <li><code>*</code> Multiplication</li>
+            <li><code>/</code> Division</li>
+            <li><code>%</code> Modulus (Remainder)</li>
+            <li><code>++</code> Increment</li>
+            <li><code>--</code> Decrement</li>
+        </ul>
+        <pre>
+let a = 10, b = 3;
+console.log(a + b); // 13
+console.log(a % b); // 1
+        </pre>
+    </section>
+    <section>
+        <h2>2. Assignment Operators</h2>
+        <ul>
+            <li><code>=</code> Assign</li>
+            <li><code>+=</code> Add and assign</li>
+            <li><code>-=</code> Subtract and assign</li>
+            <li><code>*=</code> Multiply and assign</li>
+            <li><code>/=</code> Divide and assign</li>
+        </ul>
+        <pre>
+let x = 5;
+x += 2; // x = 7
+        </pre>
+    </section>
+    <section>
+        <h2>3. Comparison Operators</h2>
+        <ul>
+            <li><code>==</code> Equal to</li>
+            <li><code>===</code> Equal value and type</li>
+            <li><code>!=</code> Not equal</li>
+            <li><code>!==</code> Not equal value or type</li>
+            <li><code>&gt;</code> Greater than</li>
+            <li><code>&lt;</code> Less than</li>
+            <li><code>&gt;=</code> Greater than or equal to</li>
+            <li><code>&lt;=</code> Less than or equal to</li>
+        </ul>
+        <pre>
+console.log(5 == '5');  // true
+console.log(5 === '5'); // false
+        </pre>
+    </section>
+    <section>
+        <h2>4. Logical Operators</h2>
+        <ul>
+            <li><code>&&</code> Logical AND</li>
+            <li><code>||</code> Logical OR</li>
+            <li><code>!</code> Logical NOT</li>
+        </ul>
+        <pre>
+let a = true, b = false;
+console.log(a && b); // false
+console.log(a || b); // true
+console.log(!a);     // false
+        </pre>
+    </section>
+    <section>
+        <h2>5. Other Operators</h2>
+        <ul>
+            <li><code>typeof</code> Type of variable</li>
+            <li><code>?</code> Ternary operator</li>
+        </ul>
+        <pre>
+console.log(typeof 123); // "number"
+let age = 18;
+let canVote = (age >= 18) ? "Yes" : "No";
+        </pre>
+    </section>
+</body>
+</html>
