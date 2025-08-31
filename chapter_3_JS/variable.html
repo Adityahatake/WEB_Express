@@ -3,27 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Variables Example</title>
     <style>
-        body{
-            background-color: grey;
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: #fff;
+            padding: 24px;
+            margin: 40px auto;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsum numquam, voluptates, odit quos tenetur deleniti consequatur, illo veniam beatae adipisci rerum recusandae aut repellendus doloremque a molestiae accusamus? Dolore?</p>
+    <div class="container">
+        <h2>Understanding Variables in JavaScript</h2>
+        <p>
+            In JavaScript, <strong>variables</strong> are used to store data values. You can create a variable using the <code>let</code>, <code>const</code>, or <code>var</code> keyword.
+        </p>
+        <ul>
+            <li><code>let</code> allows you to declare variables that can be changed later.</li>
+            <li><code>const</code> is used for variables whose values should not change.</li>
+            <li><code>var</code> is the old way to declare variables (not recommended for modern code).</li>
+        </ul>
+        <p>Open your browser's console to see the output of the following code:</p>
+    </div>
+    <script>
+        // Declaring a variable to store a string
+        let message = "Hello, world!";
+        console.log("String variable:", message);
 
+        // Declaring variables to store numbers
+        let num1 = 5;
+        let num2 = 7;
+        let sum = num1 + num2;
+        console.log("Number variables:", num1, "+", num2, "=", sum);
+
+        // Declaring a boolean variable
+        let isActive = true;
+        console.log("Boolean variable:", isActive);
+
+        // Changing the value of a variable
+        isActive = false;
+        console.log("Boolean variable after change:", isActive);
+    </script>
 </body>
-<script>
-    let x="hell0";
-    let a=10;
-    let b=10;
-    console.log(a+b);
-    console.log(x);
-    let status=true;
-    console.log(status);
-    status=false;
-    console.log(status);
-
-</script>
 </html>
