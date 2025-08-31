@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type Conversion in JavaScript</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+        .example { margin-bottom: 1em; }
+    </style>
+</head>
+<body>
+    <h1>Type Conversion in JavaScript</h1>
+    <p>
+        JavaScript automatically converts data types when necessary. This is called <strong>type conversion</strong>.<br>
+        There are two types:
+        <ul>
+            <li><b>Implicit Conversion</b> (Type Coercion): Done automatically by JavaScript.</li>
+            <li><b>Explicit Conversion</b>: Done manually by the programmer.</li>
+        </ul>
+    </p>
+
+    <div class="example">
+        <h2>Implicit Conversion</h2>
+        <pre id="implicit"></pre>
+    </div>
+
+    <div class="example">
+        <h2>Explicit Conversion</h2>
+        <pre id="explicit"></pre>
+    </div>
+
+    <script>
+        // Implicit Conversion Examples
+        let result1 = '5' + 2;      // '52' (number 2 converted to string)
+        let result2 = '5' - 2;      // 3   (string '5' converted to number)
+        let result3 = true + 1;     // 2   (true converted to 1)
+        let result4 = false + '3';  // 'false3' (false converted to string)
+
+        document.getElementById('implicit').textContent =
+            "'5' + 2 = " + result1 + "\n" +
+            "'5' - 2 = " + result2 + "\n" +
+            "true + 1 = " + result3 + "\n" +
+            "false + '3' = " + result4;
+
+        // Explicit Conversion Examples
+        let str = "123";
+        let num = Number(str);      // 123
+        let bool = Boolean(0);      // false
+        let str2 = String(456);     // "456"
+
+        document.getElementById('explicit').textContent =
+            "Number('123') = " + num + "\n" +
+            "Boolean(0) = " + bool + "\n" +
+            "String(456) = " + str2;
+    </script>
+</body>
+</html>
