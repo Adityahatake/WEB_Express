@@ -1,0 +1,246 @@
+web_Express — Notes
+=====================
+
+This file is meant to live inside the `web_Express` folder as a quick-start reference.
+It has three chapters: HTML, CSS, and JS.
+
+------------------------------------------------------------
+CHAPTER 1 — HTML
+------------------------------------------------------------
+
+1) Boilerplate
+--------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>web_Express</title>
+  <meta name="description" content="Quick web project" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>web_Express</h1>
+    <nav aria-label="Main">
+      <a href="#html">HTML</a>
+      <a href="#css">CSS</a>
+      <a href="#js">JS</a>
+    </nav>
+  </header>
+
+  <main id="html">
+    <article>
+      <h2>Welcome</h2>
+      <p>Start building!</p>
+    </article>
+  </main>
+
+  <footer>&copy; 2025</footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
+
+2) Semantic & Structure
+-----------------------
+- Use semantic tags: <header>, <nav>, <main>, <article>, <section>, <aside>, <footer>.
+- Headings are hierarchical: one <h1> per page, then <h2>…<h6>.
+- Forms: always associate <label> with inputs using for/id.
+- Accessibility:
+  * Provide alt text for images.
+  * Use landmark roles/semantic tags.
+  * Ensure keyboard focus order and visible focus styles.
+
+3) Common Elements
+------------------
+- Text: <p>, <strong>, <em>, <small>, <blockquote>, <code>, <pre>
+- Lists: <ul>, <ol>, <li>, <dl>, <dt>, <dd>
+- Media: <img>, <picture>, <video>, <audio>, <source>
+- Links & Buttons: <a href="...">, <button type="button">
+- Forms: <form>, <input>, <textarea>, <select>, <option>, <fieldset>, <legend>
+
+4) Meta & SEO Basics
+--------------------
+- Unique <title> per page.
+- One descriptive <meta name="description">.
+- Use canonical URLs if needed: <link rel="canonical" href="...">.
+- Prefer semantic HTML over div soup.
+
+
+------------------------------------------------------------
+CHAPTER 2 — CSS
+------------------------------------------------------------
+
+1) Core Concepts
+----------------
+- The Box Model: content + padding + border + margin.
+- Specificity: inline (1000) > id (100) > class/attr/pseudo-class (10) > element/pseudo-element (1).
+- Cascade: later rules win if specificity ties.
+- Layout systems: Flexbox (1D) and Grid (2D).
+- Use custom properties (variables) for theme.
+
+2) Starter Sheet (styles.css)
+-----------------------------
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --accent: #3b82f6;
+  --space: 1rem;
+  --radius: 0.5rem;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { text-decoration: none; }
+a:hover, a:focus { text-decoration: underline; }
+
+img, video { max-width: 100%; height: auto; display: block; }
+
+.container {
+  width: min(100% - 2rem, 70ch);
+  margin-inline: auto;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+}
+
+3) Flexbox Quickies
+-------------------
+.parent {
+  display: flex;
+  gap: 1rem;
+  align-items: center;    /* cross axis */
+  justify-content: space-between; /* main axis */
+  flex-wrap: wrap;
+}
+
+.child { flex: 1 1 200px; }
+
+4) Grid Quickies
+----------------
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+5) Responsive
+-------------
+@media (max-width: 768px) {
+  .nav { display: none; }
+}
+
+6) Useful Patterns
+------------------
+/* Center anything */
+.center {
+  display: grid;
+  place-items: center;
+}
+
+/* Visually hidden (but accessible) */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+
+------------------------------------------------------------
+CHAPTER 3 — JS
+------------------------------------------------------------
+
+1) Language Basics
+------------------
+- Use const by default; let when reassignment needed; avoid var.
+- Types: number, string, boolean, null, undefined, object, symbol, bigint.
+- Truthy/falsy: '', 0, NaN, null, undefined, false are falsy.
+
+// Examples
+const title = 'web_Express';
+let count = 0;
+const tags = ['html', 'css', 'js'];
+const settings = { theme: 'light', version: 1 };
+
+2) DOM Essentials
+-----------------
+const el = document.querySelector('#app');
+el.textContent = 'Hello from JS';
+el.classList.add('active');
+
+// Create & append
+const li = document.createElement('li');
+li.textContent = 'Item';
+document.querySelector('ul').appendChild(li);
+
+3) Events
+---------
+document.querySelector('button').addEventListener('click', (e) => {
+  console.log('Clicked!', e.currentTarget);
+});
+
+4) Fetch + Async/Await
+----------------------
+async function getJSON(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+}
+
+getJSON('https://api.example.com/data')
+  .then(data => console.log(data))
+  .catch(console.error);
+
+5) Modules
+----------
+// In index.html: <script type="module" src="app.js"></script>
+// app.js
+import { sum } from './utils.js';
+console.log(sum(2, 3));
+
+// utils.js
+export const sum = (a, b) => a + b;
+
+6) Tips
+-------
+- Keep scripts at the end of <body> or use defer/type="module" to avoid blocking.
+- Use strict equality (===) unless you need coercion.
+- Log thoughtfully; remove noisy logs before shipping.
+- Prefer small, pure functions; write JSDoc or comments for complex parts.
+
+------------------------------------------------------------
+PROJECT SCAFFOLD
+------------------------------------------------------------
+web_Express/
+├─ index.html
+├─ styles.css
+├─ app.js
+└─ README.txt (this file can be named web_Express_notes.txt)
+
+Happy building!
