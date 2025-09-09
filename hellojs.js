@@ -1,2 +1,2 @@
 // This is your first JavaScript program
-console.log("Hello, world!");
+console.log("samp text");
