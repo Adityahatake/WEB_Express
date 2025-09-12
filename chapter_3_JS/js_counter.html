@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple JS Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        #counter {
+            font-size: 2em;
+            margin: 20px;
+        }
+        button {
+            font-size: 1em;
+            margin: 5px;
+            padding: 10px 20px;
+        }
+    </style>
+    <script>
+        let count = 0;
+        function updateCounter() {
+            document.getElementById('counter').textContent = count;
+        }
+        function increment() {
+            count++;
+            updateCounter();
+        }
+        function decrement() {
+            count--;
+            updateCounter();
+        }
+        function reset() {
+            count = 0;
+            updateCounter();
+        }
+        window.onload = function() {
+            updateCounter();
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
