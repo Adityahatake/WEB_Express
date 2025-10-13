@@ -3,3 +3,7 @@ let max=100;
 let min =50;
 let randomnum =Math.floor(Math.random()*(max-min) )+min;
 console.log(`Random number (${min}-${max}): ${randomnum}: `);
+
+const myButton= document.getElementById("mybutton").onclick=function(){
+    document.getElementById("ans").textContent=randomnum;
+}
