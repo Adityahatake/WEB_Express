@@ -13,7 +13,55 @@
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .counter {
+                text-align: center;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+        </style>
+        <title>React Basics Example</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            // Basic React Component
+            function Counter() {
+                // useState Hook for state management
+                const [count, setCount] = React.useState(0);
+
+                return (
+                    <div className="container">
+                        <div className="counter">
+                            <h1>React Counter Example</h1>
+                            <p>Count: {count}</p>
+                            <button onClick={() => setCount(count + 1)}>Increment</button>
+                            <button onClick={() => setCount(count - 1)}>Decrement</button>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Render the component
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<Counter />);
+        </script>
+    </body>
+    </html>
 </head>
 <body>
     
