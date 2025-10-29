@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>If / Else tutorial</title>
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; line-height: 1.5; padding: 24px; max-width: 900px; margin: auto; }
+        h1,h2 { margin-top: 1.2rem; }
+        .example { border: 1px solid #ddd; padding: 12px; border-radius: 6px; margin-top: 8px; background:#fafafa; }
+        label { display:block; margin-top:8px; }
+        input[type="number"], input[type="text"] { width: 200px; padding:6px; margin-right:8px; }
+        button { padding:6px 10px; }
+        pre { background:#111; color:#fff; padding:10px; border-radius:6px; overflow:auto; }
+        .out { margin-top:8px; padding:8px; background:#fff; border:1px solid #eee; border-radius:6px; min-height:28px; }
+        small { color:#666; }
+    </style>
+</head>
+<body>
+    <h1>If / Else — quick tutorial with examples</h1>
+    <p>These examples show common patterns: if, if...else, if...else if..., ternary, nested if, and truthy/falsy checks. Use the controls and click the buttons to run each example.</p>
+
+    <h2>1. Basic if</h2>
+    <div class="example">
+        <label>Enter a number to check if it's positive:</label>
+        <input id="numPos" type="number" value="5" />
+        <button onclick="checkPositive()">Check</button>
+        <div id="outPos" class="out"></div>
+        <pre><small>// JavaScript used:
+if (n > 0) {
+    // runs when n is greater than 0
+    result = 'positive';
+}</small></pre>
+    </div>
+
+    <h2>2. if ... else</h2>
+    <div class="example">
+        <label>Enter your age to check if you can vote (18+):</label>
+        <input id="age" type="number" value="17" />
+        <button onclick="checkVoting()">Check</button>
+        <div id="outVote" class="out"></div>
+        <pre><small>// JavaScript used:
+if (age >= 18) {
+    result = 'You can vote';
+} else {
+    result = 'You cannot vote yet';
+}</small></pre>
+    </div>
+
+    <h2>3. if ... else if ... else (grading)</h2>
+    <div class="example">
+        <label>Enter a score (0–100):</label>
+        <input id="score" type="number" value="82" />
+        <button onclick="grade()">Get Grade</button>
+        <div id="outGrade" class="out"></div>
+        <pre><small>// JavaScript used:
+if (s >= 90) { grade = 'A'; }
+else if (s >= 80) { grade = 'B'; }
+else if (s >= 70) { grade = 'C'; }
+else if (s >= 60) { grade = 'D'; }
+else { grade = 'F'; }</small></pre>
+    </div>
+
+    <h2>4. Ternary operator (short if/else)</h2>
+    <div class="example">
+        <label>Enter a number to check even / odd:</label>
+        <input id="numEven" type="number" value="4" />
+        <button onclick="evenOdd()">Check</button>
+        <div id="outEven" class="out"></div>
+        <pre><small>// JavaScript used:
+result = (n % 2 === 0) ? 'even' : 'odd';</small></pre>
+    </div>
+
+    <h2>5. Nested if (multiple checks)</h2>
+    <div class="example">
+        <label>Enter temperature (°C):</label>
+        <input id="temp" type="number" value="28" />
+        <button onclick="tempAdvice()">Get advice</button>
+        <div id="outTemp" class="out"></div>
+        <pre><small>// JavaScript used:
+if (t > 30) {
+    if (t > 40) advice = 'Extreme heat — stay inside';
+    else advice = 'Hot — drink water';
+} else { advice = 'Pleasant or cool'; }</small></pre>
+    </div>
+
+    <h2>6. Truthy / falsy example (default values)</h2>
+    <div class="example">
+        <label>Enter a name (leave blank to test default):</label>
+        <input id="name" type="text" placeholder="Type a name" />
+        <button onclick="greet()">Greet</button>
+        <div id="outGreet" class="out"></div>
+        <pre><small>// JavaScript used:
+const displayName = name || 'Guest'; // if name is falsy (empty string, null, undefined, 0) it falls back</small></pre>
+    </div>
+
+    <script>
+        // 1. Basic if
+        function checkPositive() {
+            const n = Number(document.getElementById('numPos').value);
+            let result = '';
+            if (n > 0) {
+                result = n + ' is positive';
+            }
+            // If n is 0 or negative, nothing inside if runs -> show explicit fallback:
+            if (result === '') result = n + ' is zero or negative';
+            document.getElementById('outPos').textContent = result;
+        }
+
+        // 2. if ... else
+        function checkVoting() {
+            const age = Number(document.getElementById('age').value);
+            let result;
+            if (age >= 18) {
+                result = 'You can vote (age ' + age + ')';
+            } else {
+                result = 'You cannot vote yet (age ' + age + ')';
+            }
+            document.getElementById('outVote').textContent = result;
+        }
+
+        // 3. if ... else if ... else (grading)
+        function grade() {
+            const s = Number(document.getElementById('score').value);
+            let grade;
+            if (s >= 90) {
+                grade = 'A';
+            } else if (s >= 80) {
+                grade = 'B';
+            } else if (s >= 70) {
+                grade = 'C';
+            } else if (s >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+            document.getElementById('outGrade').textContent = 'Score: ' + s + ' → Grade: ' + grade;
+        }
+
+        // 4. ternary
+        function evenOdd() {
+            const n = Number(document.getElementById('numEven').value);
+            const result = (n % 2 === 0) ? (n + ' is even') : (n + ' is odd');
+            document.getElementById('outEven').textContent = result;
+        }
+
+        // 5. nested if
+        function tempAdvice() {
+            const t = Number(document.getElementById('temp').value);
+            let advice;
+            if (t > 30) {
+                if (t > 40) {
+                    advice = 'Extreme heat — stay inside and cool off';
+                } else {
+                    advice = 'Hot — wear light clothes and drink water';
+                }
+            } else {
+                advice = 'Pleasant or cool weather';
+            }
+            document.getElementById('outTemp').textContent = t + '°C → ' + advice;
+        }
+
+        // 6. truthy / falsy
+        function greet() {
+            const raw = document.getElementById('name').value;
+            // If raw is '', null, undefined, 0, NaN -> fallback to 'Guest'
+            const displayName = raw || 'Guest';
+            // Example showing an if check for an empty string too:
+            if (!raw) {
+                document.getElementById('outGreet').textContent = 'Hello, ' + displayName + ' (you did not enter a name)';
+            } else {
+                document.getElementById('outGreet').textContent = 'Hello, ' + displayName + '!';
+            }
+        }
+
+        // Optional: run some default displays on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkPositive();
+            checkVoting();
+            grade();
+            evenOdd();
+            tempAdvice();
+            greet();
+        });
+    </script>
+</body>
+</html>
