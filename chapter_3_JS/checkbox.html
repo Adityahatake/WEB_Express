@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Example</title>
+</head>
+<body>
+    <h2>Checkbox Example</h2>
+    
+    <div>
+        <input type="checkbox" id="myCheckbox" onchange="handleCheckbox()">
+        <label for="myCheckbox">Check me!</label>
+    </div>
+
+    <div>
+        <h3>Select your favorite fruits:</h3>
+        <input type="checkbox" id="apple" name="fruit" value="Apple">
+        <label for="apple">Apple</label><br>
+        
+        <input type="checkbox" id="banana" name="fruit" value="Banana">
+        <label for="banana">Banana</label><br>
+        
+        <input type="checkbox" id="orange" name="fruit" value="Orange">
+        <label for="orange">Orange</label><br>
+        
+        <button onclick="getSelectedFruits()">Show Selected Fruits</button>
+    </div>
+
+    <p id="result"></p>
+
+    <script>
+        function handleCheckbox() {
+            const checkbox = document.getElementById('myCheckbox');
+            if (checkbox.checked) {
+                alert('Checkbox is checked!');
+            } else {
+                alert('Checkbox is unchecked!');
+            }
+        }
+
+        function getSelectedFruits() {
+            const checkboxes = document.getElementsByName('fruit');
+            const selectedFruits = [];
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedFruits.push(checkbox.value);
+                }
+            });
+
+            const result = document.getElementById('result');
+            if (selectedFruits.length > 0) {
+                result.textContent = 'Selected fruits: ' + selectedFruits.join(', ');
+            } else {
+                result.textContent = 'No fruits selected';
+            }
+        }
+    </script>
+</body>
+</html>
