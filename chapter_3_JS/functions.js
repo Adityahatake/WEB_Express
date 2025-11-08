@@ -6,6 +6,7 @@ function add(a, b) {
 }
 console.log('Function Declaration add(2,3):', add(2, 3));
 
+
 /* 2) Function Expression
      - Not hoisted in the same way: assigned to a variable.
 */
