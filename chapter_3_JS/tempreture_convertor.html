@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Temperature Converter</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 1rem; }
+        .row { margin: .5rem 0; }
+        label { display: inline-block; width: 140px; }
+        input[type="number"] { width: 120px; }
+        #result { font-weight: bold; margin-top: .75rem; }
+    </style>
 </head>
-
 <body>
-    
+    <h1>Temperature Converter</h1>
+
+    <form id="converterForm" aria-label="Temperature converter">
+        <div class="row">
+            <label for="value">Value</label>
+            <input id="value" type="number" step="any" required />
+        </div>
+
+        <div class="row">
+            <label for="from">From</label>
+            <select id="from">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="to">To</label>
+            <select id="to">
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="C">Celsius (°C)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <button type="submit">Convert</button>
+            <button type="button" id="swap">Swap</button>
+            <button type="button" id="clear">Clear</button>
+        </div>
+
+        <div id="result" aria-live="polite"></div>
+    </form>
+
+    <script src="tempreture_convertor.js"></script>
 </body>
-<script src="tempreture_convertor.js"></script>
 </html>

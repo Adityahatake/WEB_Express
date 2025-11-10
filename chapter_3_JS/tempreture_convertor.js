@@ -1,131 +1,99 @@
-#!/usr/bin/env node
 // tempreture_convertor.js
-// Simple temperature conversion utility for Node.js
-// Exports conversion functions and provides a small CLI when run directly.
+// Simple temperature converter for the provided HTML
 
-const UNITS = {
-    c: "C",
-    celsius: "C",
-    f: "F",
-    fahrenheit: "F",
-    k: "K",
-    kelvin: "K",
-};
+(function () {
+    const form = document.getElementById('converterForm');
+    const input = document.getElementById('value');
+    const fromSel = document.getElementById('from');
+    const toSel = document.getElementById('to');
+    const swapBtn = document.getElementById('swap');
+    const clearBtn = document.getElementById('clear');
+    const resultEl = document.getElementById('result');
 
-function normalizeUnit(u) {
-    if (!u) return null;
-    const key = String(u).trim().toLowerCase();
-    return UNITS[key] || null;
-}
+    const SYMBOL = { C: '°C', F: '°F', K: 'K' };
 
-function toFixedSafe(n, digits = 2) {
-    if (!isFinite(n)) return NaN;
-    return Number.parseFloat(n.toFixed(digits));
-}
-
-function cToF(c) {
-    return c * 9 / 5 + 32;
-}
-function fToC(f) {
-    return (f - 32) * 5 / 9;
-}
-function cToK(c) {
-    return c + 273.15;
-}
-function kToC(k) {
-    return k - 273.15;
-}
-function fToK(f) {
-    return fToC(f) + 273.15;
-}
-function kToF(k) {
-    return cToF(kToC(k));
-}
-
-function convert(value, fromUnit, toUnit, options = {}) {
-    const digits = options.round ?? 2;
-    const from = normalizeUnit(fromUnit);
-    const to = normalizeUnit(toUnit);
-    if (from === null || to === null) {
-        throw new Error("Unknown unit. Use C, F or K (case-insensitive).");
-    }
-    if (typeof value !== "number" || Number.isNaN(value)) {
-        throw new Error("Value must be a finite number.");
-    }
-    if (from === to) return { value: toFixedSafe(value, digits), unit: to };
-
-    let result;
-    if (from === "C" && to === "F") result = cToF(value);
-    else if (from === "F" && to === "C") result = fToC(value);
-    else if (from === "C" && to === "K") result = cToK(value);
-    else if (from === "K" && to === "C") result = kToC(value);
-    else if (from === "F" && to === "K") result = fToK(value);
-    else if (from === "K" && to === "F") result = kToF(value);
-    else throw new Error("Conversion path not implemented.");
-
-    return { value: toFixedSafe(result, digits), unit: to };
-}
-
-// CLI behavior when run directly: node tempreture_convertor.js <value><unit> <targetUnit>
-// Examples:
-//   node tempreture_convertor.js 100C F
-//   node tempreture_convertor.js 32 F celsius
-if (require.main === module) {
-    const argv = process.argv.slice(2);
-    function usageAndExit(code = 0) {
-        console.log("Usage: node tempreture_convertor.js <value><unit> <targetUnit>");
-        console.log("Examples:");
-        console.log("  node tempreture_convertor.js 100C F");
-        console.log("  node tempreture_convertor.js 273.15 K C");
-        process.exit(code);
+    function formatNumber(n) {
+        if (!Number.isFinite(n)) return 'NaN';
+        // show up to 2 decimal places, drop trailing zeros
+        return +n.toFixed(2).toString();
     }
 
-    if (argv.length < 2) usageAndExit(1);
+    function convertValue(value, from, to) {
+        if (from === to) return value;
+        // convert input to Celsius as an intermediate
+        let c;
+        if (from === 'C') c = value;
+        else if (from === 'F') c = (value - 32) * 5 / 9;
+        else if (from === 'K') c = value - 273.15;
+        else throw new Error('Unknown unit: ' + from);
 
-    // parse first arg: may be "100C" or "100" "C"
-    let rawValue = argv[0];
-    let targetUnit = argv[1];
+        if (to === 'C') return c;
+        if (to === 'F') return c * 9 / 5 + 32;
+        if (to === 'K') return c + 273.15;
+        throw new Error('Unknown unit: ' + to);
+    }
 
-    let valueStr, fromUnit;
-    const combinedMatch = rawValue.match(/^([+-]?[0-9]*\.?[0-9]+)([a-zA-Z]+)$/);
-    if (combinedMatch) {
-        valueStr = combinedMatch[1];
-        fromUnit = combinedMatch[2];
-    } else if (argv.length >= 2) {
-        // Try: node file.js 100 C F  -> argv[0]=100 argv[1]=C (we already assigned targetUnit=argv[1])
-        // If argv.length >=3 then targetUnit is argv[2]
-        if (argv.length >= 3) {
-            valueStr = rawValue;
-            fromUnit = argv[1];
-            targetUnit = argv[2];
-        } else {
-            usageAndExit(1);
+    function showMessage(msg, isError = false) {
+        resultEl.textContent = msg;
+        resultEl.style.color = isError ? 'crimson' : '';
+    }
+
+    function handleConvert(e) {
+        if (e) e.preventDefault();
+        const raw = input.value;
+        const from = fromSel.value;
+        const to = toSel.value;
+
+        const value = parseFloat(raw);
+        if (Number.isNaN(value)) {
+            showMessage('Please enter a valid number.', true);
+            return;
         }
+
+        // Validate Kelvin input (cannot be negative)
+        if (from === 'K' && value < 0) {
+            showMessage('Kelvin cannot be negative.', true);
+            return;
+        }
+
+        const result = convertValue(value, from, to);
+
+        // Validate resulting Kelvin (cannot be negative)
+        if (to === 'K' && result < 0) {
+            showMessage('Result is below absolute zero (invalid).', true);
+            return;
+        }
+
+        showMessage(`${formatNumber(value)} ${SYMBOL[from]} = ${formatNumber(result)} ${SYMBOL[to]}`);
     }
 
-    const valueNum = Number(valueStr);
-    if (!isFinite(valueNum)) {
-        console.error("Invalid numeric value:", valueStr);
-        process.exit(1);
+    function handleSwap() {
+        const a = fromSel.value;
+        const b = toSel.value;
+        fromSel.value = b;
+        toSel.value = a;
+
+        // if there is an input value, re-run conversion
+        if (input.value.trim() !== '') {
+            handleConvert();
+        } else {
+            resultEl.textContent = '';
+        }
+        input.focus();
     }
 
-    try {
-        const res = convert(valueNum, fromUnit, targetUnit, { round: 2 });
-        console.log(`${valueNum}${normalizeUnit(fromUnit)} → ${res.value}${res.unit}`);
-        process.exit(0);
-    } catch (err) {
-        console.error("Error:", err.message);
-        usageAndExit(1);
+    function handleClear() {
+        input.value = '';
+        fromSel.value = 'C';
+        toSel.value = 'F';
+        resultEl.textContent = '';
+        input.focus();
     }
-}
 
-// Export for programmatic use
-module.exports = {
-    convert,
-    cToF,
-    fToC,
-    cToK,
-    kToC,
-    fToK,
-    kToF,
-};
+    form.addEventListener('submit', handleConvert);
+    swapBtn.addEventListener('click', handleSwap);
+    clearBtn.addEventListener('click', handleClear);
+
+    // Optional: convert on Enter in the number input (form submit already does this)
+    // Accessibility: keep aria-live updated (the HTML already set aria-live)
+})();
