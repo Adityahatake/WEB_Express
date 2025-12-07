@@ -15,3 +15,14 @@ printFruits("kiwi", "orange", ...fruits);
 for(let f of fruits){
     console.log(f);
 }
+
+function sum(...numbers){
+    let Result=0
+    for(number of numbers){
+        Result+=number;
+    }
+    return Result;
+}
+
+let p1= sum(1,2,3);
+console.log(p1);
