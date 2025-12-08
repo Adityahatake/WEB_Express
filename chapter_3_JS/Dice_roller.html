@@ -5,8 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #container{
+        background-color: rgba(235, 239, 126, 0.609);
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 13px;
+        margin: 20px;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    button{
+        font-size: 1.5rem;
+        color: rgb(255, 255, 255);
+        border-radius: 12px;
+        background-color: rgb(177, 48, 186);
+        border: solid;
+        padding: 5px;
+    }
+    button:hover{
+        background-color: blue;
+    }
+    body{
+        background-color: rgba(62, 73, 144, 0.861);
+    }
+    input{
+        border-radius: 12px;
+        border: solid ;
+    }
+</style>
 <body>
-    
+    <div id="container">
+    <h1>Dice Roller</h1>
+    <label># of Dice</label>
+    <input type="number" value="1"  id="" min="1">
+    <Button onclick="rollDice()">Click Me</Button>
+    <div id="Images"></div>
+    <div id="Result"></div>
+    </div>
 </body>
 <script src="Dice_roller.js"></script>
 </html>
