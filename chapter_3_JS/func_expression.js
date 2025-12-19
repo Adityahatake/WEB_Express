@@ -2,7 +2,6 @@ setTimeout(function(){
     console.log("hello")
 } ,3000);
 
-
 // Function expression example
 const add = function(a, b) {
     return a + b;
