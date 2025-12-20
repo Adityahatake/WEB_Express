@@ -14,6 +14,7 @@ console.log("Can make payment:", hasCash || hasCard); // true (at least one cond
 let isLoggedIn = false;
 console.log("Is not logged in:", !isLoggedIn); // true (inverts the boolean value)
 
+
 // 4. Comparison operators
 let age = 25;
 console.log("Is adult:", age >= 18); // true
