@@ -26,4 +26,5 @@ let isSunny = true;
 let isWeekend = true;
 
 let isPerfectDay = temperature > 20 && isSunny && isWeekend;
+
 console.log("Is perfect day for picnic:", isPerfectDay); // true
