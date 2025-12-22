@@ -14,4 +14,6 @@ const greet = function sayHello(name) {
     return "Hello, " + name + "!";
 };
 
+
+
 console.log(greet("Alice")); // Output: Hello, Alice!
