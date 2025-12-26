@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .calculator {
+            background: #222;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            padding: 32px 24px;
+            width: 320px;
+            max-width: 90vw;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .display {
+            background: #111;
+            color: #fff;
+            font-size: 2.5rem;
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: right;
+            letter-spacing: 2px;
+            min-height: 56px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            margin-bottom: 8px;
+            overflow-x: auto;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+        button {
+            background: #333;
+            color: #fff;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        button:active {
+            background: #444;
+        }
+        .btn-operator {
+            background: #ff9500;
+            color: #fff;
+        }
+        .btn-operator:active {
+            background: #e08a00;
+        }
+        .btn-ac {
+            background: #a5a5a5;
+            color: #222;
+        }
+        .btn-ac:active {
+            background: #888;
+        }
+        .btn-zero {
+            grid-column: span 2;
+            border-radius: 32px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn-ac">AC</button>
+            <button>±</button>
+            <button>%</button>
+            <button class="btn-operator">÷</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="btn-operator">×</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="btn-operator">−</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="btn-operator">+</button>
+            <button class="btn-zero">0</button>
+            <button>.</button>
+            <button class="btn-operator">=</button>
+        </div>
+    </div>
+</body>
+<script src="calculator.js"></script>
+</html>
