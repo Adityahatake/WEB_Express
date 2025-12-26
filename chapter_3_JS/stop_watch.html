@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stopwatch</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        #display { font-size: 3em; margin-bottom: 20px; }
+        button { font-size: 1.2em; margin: 5px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <div id="display">00:00:00.00</div>
+    <button id="start">Start</button>
+    <button id="stop" disabled>Stop</button>
+    <button id="reset" disabled>Reset</button>
+
+    <script>
+        let startTime = 0, elapsed = 0, timerInterval = null;
+
+        function formatTime(ms) {
+            let centiseconds = Math.floor((ms % 1000) / 10);
+            let seconds = Math.floor((ms / 1000) % 60);
+            let minutes = Math.floor((ms / (1000 * 60)) % 60);
+            let hours = Math.floor(ms / (1000 * 60 * 60));
+            return (
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0') + '.' +
+                String(centiseconds).padStart(2, '0')
+            );
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').textContent = formatTime(elapsed);
+        }
+
+        document.getElementById('start').onclick = function() {
+            startTime = Date.now() - elapsed;
+            timerInterval = setInterval(function() {
+                elapsed = Date.now() - startTime;
+                updateDisplay();
+            }, 10);
+            this.disabled = true;
+            document.getElementById('stop').disabled = false;
+            document.getElementById('reset').disabled = false;
+        };
+
+        document.getElementById('stop').onclick = function() {
+            clearInterval(timerInterval);
+            document.getElementById('start').disabled = false;
+            this.disabled = true;
+        };
+
+        document.getElementById('reset').onclick = function() {
+            clearInterval(timerInterval);
+            elapsed = 0;
+            updateDisplay();
+            document.getElementById('start').disabled = false;
+            document.getElementById('stop').disabled = true;
+            this.disabled = true;
+        };
+
+        updateDisplay();
+    </script>
+</body>
+</html>
