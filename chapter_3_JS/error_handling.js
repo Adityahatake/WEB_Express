@@ -1,4 +1,5 @@
 // Error handling in JavaScript is commonly done using try...catch blocks.
+
 // This allows you to catch and handle errors gracefully without crashing your program.
 
 function divide(a, b) {

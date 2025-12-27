@@ -1,4 +1,5 @@
 function updateClock() {
+
     const clock = document.querySelector('.clock');
     const now = new Date();
 
