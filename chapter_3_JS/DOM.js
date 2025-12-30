@@ -133,6 +133,7 @@ const prevElem = heading.previousElementSibling;
 const input = document.querySelector('input');
 input.value = 'New value';
 
+
 // Focus, blur, select
 input.focus();
 input.blur();
