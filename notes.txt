@@ -221,9 +221,7 @@ getJSON('https://api.example.com/data')
 ----------
 // In index.html: <script type="module" src="app.js"></script>
 // app.js
-import { sum } from './utils.js';
-console.log(sum(2, 3));
-
+import { sum } from './utils.js';  
 // utils.js
 export const sum = (a, b) => a + b;
 
