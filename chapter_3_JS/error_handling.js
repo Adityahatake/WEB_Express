@@ -2,6 +2,7 @@
 
 // This allows you to catch and handle errors gracefully without crashing your program.
 
+
 function divide(a, b) {
     try {
         if (b === 0) {

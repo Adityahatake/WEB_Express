@@ -120,6 +120,7 @@ const lastChild = parent.lastChild;
 const next = heading.nextSibling;
 const prev = heading.previousSibling;
 
+
 // Element siblings
 const nextElem = heading.nextElementSibling;
 const prevElem = heading.previousElementSibling;
