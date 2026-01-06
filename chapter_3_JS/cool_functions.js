@@ -10,7 +10,6 @@ function sayGoodbye() {
 }
 
 greet("Alice", sayGoodbye);
-
 // forEach
 // Executes a provided function once for each array element
 const numbers = [1, 2, 3, 4, 5];
