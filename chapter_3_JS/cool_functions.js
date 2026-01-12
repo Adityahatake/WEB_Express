@@ -17,7 +17,6 @@ numbers.forEach(function(num, index) {
     console.log(`Index ${index}: ${num}`);
 });
 
-
 // filter
 // Creates a new array with all elements that pass the test implemented by the provided function
 const evenNumbers = numbers.filter(function(num) {
