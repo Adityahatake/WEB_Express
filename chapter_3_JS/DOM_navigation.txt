@@ -53,6 +53,7 @@
         - Prefer children/firstElementChild over childNodes/firstChild to avoid text nodes.
         - Always check for null when navigating (e.g., nextElementSibling may be null).
 
+
     Summary:
     DOM navigation allows you to programmatically access and manipulate HTML elements and their relationships. 
     Understanding parent, child, and sibling relationships, as well as the various DOM selection and traversal methods, 
