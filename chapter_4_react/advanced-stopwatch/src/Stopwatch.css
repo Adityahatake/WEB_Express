@@ -1,0 +1,324 @@
+/* src/Stopwatch.css */
+.stopwatch-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #f8fafc;
+  overflow: hidden;
+  position: relative;
+}
+
+.stopwatch-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+  animation: rotate 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.stopwatch-glass {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stopwatch-glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.time-display {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+}
+
+.time-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5rem;
+}
+
+.time-group.centi {
+  width: 4rem;
+}
+
+.time-value {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: color 0.3s ease;
+}
+
+.active .time-value {
+  color: #fff;
+}
+
+.time-value.accent {
+  font-size: 3rem;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.time-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+
+.colon {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #475569;
+  transform: translateY(-1rem);
+}
+
+.colon.dot {
+  transform: translateY(0);
+  margin: 0 -0.25rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.control-btn {
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  background: rgba(30, 41, 59, 0.6);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.control-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.control-btn:not(:disabled):hover {
+  transform: scale(1.1);
+  color: #f8fafc;
+  background: rgba(51, 65, 85, 0.8);
+}
+
+.control-btn:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.control-btn.main {
+  width: 5rem;
+  height: 5rem;
+  color: white;
+}
+
+.control-btn.start {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: none;
+}
+
+.control-btn.start:hover {
+  box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.control-btn.pause {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: none;
+}
+
+.control-btn.pause:hover {
+  box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.control-btn.reset, .control-btn.lap {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.play-icon {
+  transform: translateX(2px);
+}
+
+/* Laps */
+.laps-container {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  max-height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.laps-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  padding: 0 1rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.laps-header span:nth-child(2),
+.laps-header span:nth-child(3) {
+  text-align: right;
+}
+
+.laps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+}
+
+.laps-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.laps-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.laps-list::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 4px;
+}
+
+.lap-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.875rem;
+  border: 1px solid transparent;
+  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lap-item.best {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.lap-item.worst {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.lap-num {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.lap-item.best .lap-num,
+.lap-item.worst .lap-num {
+  color: inherit;
+}
+
+.lap-duration, .lap-total {
+  text-align: right;
+  font-weight: 500;
+}
+
+.lap-total {
+  color: #94a3b8;
+}
+
+.lap-item.best .lap-total,
+.lap-item.worst .lap-total {
+  color: inherit;
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .stopwatch-glass {
+    padding: 2rem;
+    border-radius: 24px;
+    margin: 1rem;
+  }
+  
+  .time-value {
+    font-size: 3.5rem;
+  }
+  
+  .time-value.accent {
+    font-size: 2.25rem;
+  }
+  
+  .time-group {
+    width: 4rem;
+  }
+  
+  .colon {
+    font-size: 2.5rem;
+  }
+  
+  .control-btn.main {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
