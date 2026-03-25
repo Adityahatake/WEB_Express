@@ -1,16 +1,49 @@
-# React + Vite
+# Advanced React Stopwatch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A beautifully designed, feature-rich stopwatch built with React and Vite. It offers advanced functionalities like lap tracking with best/worst lap highlighting, sub-millisecond precision, and a modern glassmorphic UI.
 
-Currently, two official plugins are available:
+## Features
+- **High Precision Timer:** Tracks time down to the hundredths of a second.
+- **Lap Tracking:** Record multiple laps while the timer runs.
+- **Best/Worst Laps:** Automatically highlights the fastest and slowest laps for quick visual feedback.
+- **Glassmorphic UI:** A sleek, modern user interface with smooth animations and transitions.
+- **Clean Architecture:** Separated UI logic (Components), business logic (Hooks), and generic functions (Utils).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Structure
+This project has been carefully organized following React best practices:
+```text
+src/
+├── assets/                  # Static assets
+├── components/
+│   └── Stopwatch/           # Main UI component and styles
+│       ├── Stopwatch.jsx
+│       └── Stopwatch.css
+├── hooks/
+│   └── useStopwatch.js      # Custom hook managing timer and lap state
+├── utils/
+│   └── formatTime.js        # Pure function for time formatting
+├── App.jsx                  # Root component
+├── main.jsx                 # Entry point
+└── index.css                # Global styles
+```
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Run development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies
+- React 18
+- Vite
+- Lucide React (Icons)
+- Vanilla CSS

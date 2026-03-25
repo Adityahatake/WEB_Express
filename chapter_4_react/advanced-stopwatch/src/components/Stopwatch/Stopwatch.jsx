@@ -1,67 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Play, Pause, Flag, RotateCcw } from 'lucide-react';
+import { useStopwatch } from '../../hooks/useStopwatch';
+import { formatTime } from '../../utils/formatTime';
 import './Stopwatch.css';
 
 const Stopwatch = () => {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const [laps, setLaps] = useState([]);
+  const { time, isRunning, laps, handleStartPause, handleReset, handleLap } = useStopwatch();
   
-  const timerRef = useRef(null);
-  const startTimeRef = useRef(0);
-  const pausedTimeRef = useRef(0);
-
-  useEffect(() => {
-    if (isRunning) {
-      startTimeRef.current = Date.now() - pausedTimeRef.current;
-      timerRef.current = setInterval(() => {
-        setTime(Date.now() - startTimeRef.current);
-      }, 10);
-    } else {
-      clearInterval(timerRef.current);
-    }
-    return () => clearInterval(timerRef.current);
-  }, [isRunning]);
-
-  const handleStartPause = () => {
-    if (isRunning) {
-      pausedTimeRef.current = time;
-    }
-    setIsRunning(!isRunning);
-  };
-
-  const handleReset = () => {
-    setIsRunning(false);
-    setTime(0);
-    pausedTimeRef.current = 0;
-    setLaps([]);
-  };
-
-  const handleLap = () => {
-    if (isRunning) {
-      setLaps((prevLaps) => [
-        {
-          id: Date.now(),
-          time: time,
-          lapDuration: prevLaps.length > 0 ? time - prevLaps[0].time : time,
-        },
-        ...prevLaps,
-      ]);
-    }
-  };
-
-  const formatTime = (ms) => {
-    const min = Math.floor(ms / 60000);
-    const sec = Math.floor((ms % 60000) / 1000);
-    const centi = Math.floor((ms % 1000) / 10);
-
-    return {
-      min: min.toString().padStart(2, '0'),
-      sec: sec.toString().padStart(2, '0'),
-      centi: centi.toString().padStart(2, '0')
-    };
-  };
-
   const { min, sec, centi } = formatTime(time);
 
   return (
